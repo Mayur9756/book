@@ -2,11 +2,14 @@ package pages;
 
 import java.util.concurrent.TimeUnit;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
 public class Contact {
 	
 	static WebDriver driver;
@@ -50,7 +53,18 @@ public class Contact {
 	{
 		driver=this.driver;
 		Thread.sleep(5000); 
-		 driver.findElement(By.xpath("//div[@class='open-button ng-star-inserted']//button")).click();
-		
+		driver.findElement(By.xpath("//h6[@class='pb-1 title-width text-smaller']/span")).click();
+		driver.findElement(By.linkText("Q001")).click();
+		Thread.sleep(5000);
+		String a1 = "₹ 12,15,118.76";
+	    String a2 =driver.findElement(By.xpath("//td[@id='total']")).getText();
+	    if(a1.equalsIgnoreCase(a2))
+	    {
+	    	System.out.print("Quotation values are equal");
+	    }
+	    else
+	    {
+	    	System.out.print("Quotation values are not equal");
+	    }
 	}
 }
